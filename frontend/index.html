@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodnest LMS - Premium Learning Platform</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/glassmorphism.css">
+</head>
+
+<body class="dark-theme">
+    <div id="app">
+        <nav class="glass-navbar">
+            <div class="nav-brand" onclick="router.navigate('/')">
+                <i data-lucide="book-open"></i> Kodnest LMS
+            </div>
+            <div class="nav-links" id="nav-auth-links">
+                <!-- Injected via JS based on auth state -->
+            </div>
+        </nav>
+
+        <main id="main-content" class="container">
+            <!-- Dynamic page content injected here -->
+        </main>
+
+        <div id="toast-container"></div>
+    </div>
+
+    <!-- Core App Logic -->
+    <script src="js/api.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Page Scripts -->
+    <script src="pages/home.js"></script>
+    <script src="pages/auth.js"></script>
+    <script src="pages/course.js"></script>
+    <script src="pages/learning.js"></script>
+    <script src="pages/dashboard.js"></script>
+
+    <script>
+        // Initialize once DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            app.init();
+        });
+    </script>
+</body>
+
+</html>
