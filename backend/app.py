@@ -1,4 +1,5 @@
 import os
+import ssl
 from flask import Flask
 from flask_cors import CORS
 from models import db
@@ -19,11 +20,14 @@ def create_app():
     # Configure SQLAlchemy
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # Configure SSL Context to bypass self-signed certificate errors from Aiven
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
         'connect_args': {
-            'ssl': {
-                'ca': ''
-            }
+            'ssl': ctx
         }
     }
     
