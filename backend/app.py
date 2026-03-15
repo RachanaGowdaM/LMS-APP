@@ -42,7 +42,7 @@ def create_app():
         return {'status': 'healthy', 'message': 'LMS Backend is running!'}
         
     return app
+app = create_app()
 
 if __name__ == '__main__':
-    app = create_app()
     app.run(debug=True, port=5000)
