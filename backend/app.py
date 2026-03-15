@@ -9,7 +9,17 @@ load_dotenv()
 
 def create_app():
     app = Flask(__name__)
-    CORS(app)
+    
+    # Enable CORS for local development and the Vercel frontend
+    CORS(app, resources={
+        r"/api/*": {
+            "origins": [
+                "http://localhost:8000",
+                "http://127.0.0.1:8000",
+                "https://lms-mmv57lj5k-rachanagowdarachana4-7842s-projects.vercel.app"
+            ]
+        }
+    })
     
     db_user = os.getenv('DB_USER', 'root')
     db_password = os.getenv('DB_PASSWORD', '')
