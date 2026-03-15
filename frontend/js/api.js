@@ -4,7 +4,8 @@
  */
 class ApiService {
     constructor() {
-        this.baseUrl = 'http://localhost:5000/api';
+        // Change from http://localhost:5000/api to the live Render URL
+        this.baseUrl = 'https://lms-app-3.onrender.com/api';
     }
 
     // Helper to get auth headers
